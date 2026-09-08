@@ -1,6 +1,7 @@
 # Sitch
 
 A fast, colorful system fetch in Go.
+![Gif](./assets/preview.gif)
 
 ## Install
 
