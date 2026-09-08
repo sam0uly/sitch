@@ -1,5 +1,11 @@
 # Sitch
 
+[![Go Version](https://img.shields.io/github/go-mod/go-version/sam0uly/sitch?style=flat-square&color=FF985A&labelColor=201F26)](https://go.dev/)
+[![Go Report Card](https://img.shields.io/badge/go%20report-A%2B-FF985A?style=flat-square&labelColor=201F26)](https://goreportcard.com/report/github.com/sam0uly/sitch)
+[![Go Reference](https://img.shields.io/badge/pkg.go.dev-reference-FF937D?style=flat-square&labelColor=201F26)](https://pkg.go.dev/github.com/sam0uly/sitch)
+[![License](https://img.shields.io/github/license/sam0uly/sitch?style=flat-square&color=FF6E63&labelColor=201F26)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/sam0uly/sitch?include_prereleases&style=flat-square&color=FF985A&labelColor=201F26&label=release)](https://github.com/sam0uly/sitch/releases)
+
 **Blazing fast and glamorous TUI system information fetcher**
 
 ![Gif](./assets/preview.gif)
