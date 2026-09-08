@@ -1,12 +1,33 @@
 # Use the terminal's ANSI palette instead of Charmtone.
 format = "terminal"
 color_mode = "tty"
+logo_justify = "top"
+logo_position = "bottom"
+logo = "macos_small"
 
 rows = [
-  ["os", "host"],
-  ["gpu", "igpu"],
-  ["cpu", "memory"],
-  ["packages", "shell"],
-  ["display", "desktop"],
-  ["terminal", "uptime"],
+  [
+    "os",
+    "host",
+  ],
+  [
+    "gpu",
+    "igpu",
+  ],
+  [
+    "cpu",
+    "memory",
+  ],
+  [
+    "packages",
+    "shell",
+  ],
+  [
+    "display",
+    "desktop",
+  ],
+  [
+    "terminal",
+    "uptime",
+  ],
 ]

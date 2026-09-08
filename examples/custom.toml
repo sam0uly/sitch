@@ -1,6 +1,7 @@
 # Custom palette inspired by Rose Pine.
 format = "terminal"
 color_mode = "custom"
+ascii = false
 
 rows = [
   [

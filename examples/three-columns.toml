@@ -1,14 +1,37 @@
 # Custom palette inspired by Atom One Dark.
 format = "terminal"
 color_mode = "custom"
+ascii = false
 
 rows = [
-  ["os", "host", "kernel"],
-  ["uptime", "memory", "disk"],
-  ["gpu", "igpu", "cpu"],
-  ["packages", "shell", "display"],
-  ["desktop", "terminal", "os-age"],
-  ["locale"],
+  [
+    "os",
+    "host",
+    "kernel",
+  ],
+  [
+    "uptime",
+    "memory",
+    "disk",
+  ],
+  [
+    "gpu",
+    "igpu",
+    "cpu",
+  ],
+  [
+    "packages",
+    "shell",
+    "display",
+  ],
+  [
+    "desktop",
+    "terminal",
+    "os-age",
+  ],
+  [
+    "locale",
+  ],
 ]
 
 [colors]

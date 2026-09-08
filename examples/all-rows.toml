@@ -1,17 +1,42 @@
 # Custom palette inspired by Kanagawa.
 format = "terminal"
 color_mode = "custom"
+ascii = false
 
 # Every supported spec is shown here.
 rows = [
-  ["os", "host"],
-  ["disk", "memory"],
-  ["kernel", "uptime"],
-  ["gpu", "igpu"],
-  ["cpu", "packages"],
-  ["shell", "display"],
-  ["desktop", "terminal"],
-  ["os-age", "locale"],
+  [
+    "os",
+    "host",
+  ],
+  [
+    "disk",
+    "memory",
+  ],
+  [
+    "kernel",
+    "uptime",
+  ],
+  [
+    "gpu",
+    "igpu",
+  ],
+  [
+    "cpu",
+    "packages",
+  ],
+  [
+    "shell",
+    "display",
+  ],
+  [
+    "desktop",
+    "terminal",
+  ],
+  [
+    "os-age",
+    "locale",
+  ],
 ]
 
 [colors]

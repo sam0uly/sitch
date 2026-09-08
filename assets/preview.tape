@@ -20,7 +20,7 @@ Type "clear"
 Enter
 Show
 
-Type "sitch -c examples/all-rows.toml"
+Type "sitch -c examples/minimal.toml"
 Enter
 Sleep 2s
 Type "clear"
@@ -30,7 +30,7 @@ Enter
 Sleep 2s
 Type "clear"
 Enter
-Type "sitch -c examples/minimal.toml"
+Type "sitch -c examples/all-rows.toml"
 Enter
 Sleep 2s
 Type "clear"

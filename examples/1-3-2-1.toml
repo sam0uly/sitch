@@ -1,7 +1,9 @@
 # Custom palette inspired by Gruvbox Dark.
 format = "terminal"
 color_mode = "custom"
-ascii = false
+logo_position = "right"
+logo_justify = "middle"
+logo = "nixos_small"
 
 rows = [["os"], ["host", "kernel", "uptime"], ["memory", "disk"], ["packages"]]
 
