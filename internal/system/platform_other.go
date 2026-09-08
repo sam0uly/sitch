@@ -6,6 +6,7 @@ import (
 	"context"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"runtime"
 	"strings"
 	"time"
@@ -32,6 +33,9 @@ func collectPlatform(parent context.Context) (Info, error) {
 		Display:   "unknown",
 		OSAge:     "unknown",
 	}
+	info.MemoryUsed, info.MemoryTotal, info.MemoryUnit = memory()
+	info.DiskUsed, info.DiskTotal = diskUsage("/")
+	info.OSAge = osAge(osAgePath())
 	if runtime.GOOS == "darwin" {
 		info.HostModel = firstNonEmpty(commandOutput(ctx, "sysctl", "-n", "hw.model"), "unknown")
 		info.CPU = firstNonEmpty(commandOutput(ctx, "sysctl", "-n", "machdep.cpu.brand_string"), "unknown")
@@ -52,4 +56,15 @@ func commandOutput(ctx context.Context, name string, args ...string) string {
 		return ""
 	}
 	return strings.TrimSpace(string(output))
+}
+
+func osAgePath() string {
+	if runtime.GOOS == "windows" {
+		drive := os.Getenv("SystemDrive")
+		if drive == "" {
+			drive = "C:"
+		}
+		return filepath.Join(drive, "Windows")
+	}
+	return "/"
 }

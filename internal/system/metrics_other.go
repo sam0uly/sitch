@@ -1,8 +1,8 @@
-//go:build !linux
+//go:build !linux && !darwin && !windows
 
 package system
 
-func memory(string) (used, total uint64, unit string) { return 0, 0, "" }
+func memory() (used, total uint64, unit string) { return 0, 0, "" }
 
 func diskUsage(string) (used, total uint64) { return 0, 0 }
 
