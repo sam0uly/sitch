@@ -1,6 +1,7 @@
 # Sitch
 
-A fast, colorful system fetch in Go.
+**Blazing fast and glamorous TUI system information fetcher**
+
 ![Gif](./assets/preview.gif)
 
 ## Install
