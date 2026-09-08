@@ -53,16 +53,16 @@ Color modes:
 
 Flags override TOML where it makes sense. Every flag below is also accepted in the config file under the same name (without the leading `--`).
 
-| Flag | Short | TOML key | Type | Default | Description |
-| --- | --- | --- | --- | --- | --- |
-| `--fetch` | `-f` | — | bool | `true` | Print the fetch (default behavior; the flag exists for explicitness). |
-| `--json` | `-j` | `format = "json"` | bool | `false` | Force JSON output, ignoring the TOML `format`. |
-| `--config <path>` | `-c` | — | string | user config dir | Read a specific TOML file instead of the default. |
-| `--color <mode>` | — | `color_mode` | `charmtone` \| `tty` | unset | Switch the palette for one run. Cannot pick `custom` because the palette lives in the file. |
-| `--no-ascii` | `-a` | `ascii = false` | bool | `false` | Hide the per-distro ASCII logo column; show only the Bento grid. |
-| `--truncate` | — | `truncate = true` | bool | `false` | Clip the logo vertically so the body never grows taller than the (header + grid). |
-| `--logo <id>` | — | `logo = "<id>"` | string | empty | Show the bundled logo for `<id>` instead of the detected distro. Case-insensitive. |
-| `--logo-file <path>` | — | `logo_file = "<path>"` | string | empty | Read ASCII art from a file. Overrides `--logo` and auto-detection. |
+| Flag                 | Short | TOML key               | Type                 | Default         | Description                                                                                 |
+| -------------------- | ----- | ---------------------- | -------------------- | --------------- | ------------------------------------------------------------------------------------------- |
+| `--fetch`            | `-f`  | —                      | bool                 | `true`          | Print the fetch (default behavior; the flag exists for explicitness).                       |
+| `--json`             | `-j`  | `format = "json"`      | bool                 | `false`         | Force JSON output, ignoring the TOML `format`.                                              |
+| `--config <path>`    | `-c`  | —                      | string               | user config dir | Read a specific TOML file instead of the default.                                           |
+| `--color <mode>`     | —     | `color_mode`           | `charmtone` \| `tty` | unset           | Switch the palette for one run. Cannot pick `custom` because the palette lives in the file. |
+| `--no-ascii`         | `-a`  | `ascii = false`        | bool                 | `false`         | Hide the per-distro ASCII logo column; show only the Bento grid.                            |
+| `--truncate`         | —     | `truncate = true`      | bool                 | `false`         | Clip the logo vertically so the body never grows taller than the (header + grid).           |
+| `--logo <id>`        | —     | `logo = "<id>"`        | string               | empty           | Show the bundled logo for `<id>` instead of the detected distro. Case-insensitive.          |
+| `--logo-file <path>` | —     | `logo_file = "<path>"` | string               | empty           | Read ASCII art from a file. Overrides `--logo` and auto-detection.                          |
 
 ## Examples
 
