@@ -1,0 +1,35 @@
+# Custom palette inspired by Solarized Dark.
+format = "terminal"
+color_mode = "custom"
+
+rows = [
+  ["os"], ["host"], ["kernel"], ["uptime"], ["gpu"], ["igpu"],
+  ["cpu"], ["memory"], ["disk"], ["packages"], ["shell"], ["display"],
+  ["desktop"], ["terminal"], ["os-age"], ["locale"],
+]
+
+[colors]
+border = "#586e75"
+background = "#002b36"
+header = "#93a1a1"
+value = "#93a1a1"
+sitch = "#d33682"
+
+[colors.titles]
+os = "#dc322f"
+host = "#cb4b16"
+disk = "#b58900"
+memory = "#859900"
+kernel = "#2aa198"
+uptime = "#6c71c4"
+gpu = "#268bd2"
+igpu = "#3aa6b3"
+cpu = "#cb4b16"
+packages = "#b58900"
+shell = "#cb4b16"
+display = "#268bd2"
+desktop = "#859900"
+terminal = "#d33682"
+os-age = "#dc322f"
+locale = "#6c71c4"
+logo = "#bb9af7"

@@ -1,0 +1,38 @@
+# Custom palette inspired by Atom One Dark.
+format = "terminal"
+color_mode = "custom"
+
+rows = [
+  ["os", "host", "kernel"],
+  ["uptime", "memory", "disk"],
+  ["gpu", "igpu", "cpu"],
+  ["packages", "shell", "display"],
+  ["desktop", "terminal", "os-age"],
+  ["locale"],
+]
+
+[colors]
+border = "#3e4451"
+background = "#282c34"
+header = "#abb2bf"
+value = "#abb2bf"
+sitch = "#c678dd"
+
+[colors.titles]
+os = "#e06c75"
+host = "#d19a66"
+disk = "#e5c07b"
+memory = "#98c379"
+kernel = "#56b6c2"
+uptime = "#c678dd"
+gpu = "#61afef"
+igpu = "#56b6c2"
+cpu = "#e06c75"
+packages = "#e5c07b"
+shell = "#d19a66"
+display = "#61afef"
+desktop = "#98c379"
+terminal = "#c678dd"
+os-age = "#e06c75"
+locale = "#abb2bf"
+logo = "#bb9af7"

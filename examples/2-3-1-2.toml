@@ -1,0 +1,50 @@
+# Custom palette inspired by Nord.
+format = "terminal"
+color_mode = "custom"
+ascii = false
+
+
+rows = [
+  [
+    "os",
+    "host",
+  ],
+  [
+    "kernel",
+    "uptime",
+    "os-age",
+  ],
+  [
+    "gpu",
+  ],
+  [
+    "igpu",
+    "cpu",
+  ],
+]
+
+[colors]
+border = "#4c566a"
+background = "#2e3440"
+header = "#eceff4"
+value = "#eceff4"
+sitch = "#b48ead"
+
+[colors.titles]
+os = "#bf616a"
+host = "#d08770"
+disk = "#5e81ac"
+memory = "#a3be8c"
+kernel = "#88c0d0"
+uptime = "#b48ead"
+gpu = "#81a1c1"
+igpu = "#8fbcbb"
+cpu = "#ebcb8b"
+packages = "#eceff4"
+shell = "#d8dee9"
+display = "#5e81ac"
+desktop = "#a3be8c"
+terminal = "#d08770"
+os-age = "#bf616a"
+locale = "#b48ead"
+logo = "#bb9af7"

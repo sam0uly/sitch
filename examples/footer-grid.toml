@@ -1,0 +1,17 @@
+# Footer is bounded to the grid box (sits under the grid only,
+# not the ASCII logo column). Useful when the logo is taller
+# than the grid and you want the footer visually attached to
+# the data.
+format = "terminal"
+color_mode = "charmtone"
+footer_align = "grid"
+
+rows = [
+  ["os", "host"],
+  ["kernel", "uptime"],
+  ["cpu"],
+  ["gpu", "igpu"],
+  ["memory", "disk"],
+  ["shell", "terminal"],
+  ["desktop", "display"],
+]

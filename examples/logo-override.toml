@@ -1,0 +1,10 @@
+format = "terminal"
+color_mode = "charmtone"
+
+logo = "arch"
+
+rows = [
+	["os", "host"],
+	["cpu", "gpu"],
+	["memory", "packages"],
+]

@@ -1,0 +1,32 @@
+# Custom palette inspired by Gruvbox Dark.
+format = "terminal"
+color_mode = "custom"
+ascii = false
+
+rows = [["os"], ["host", "kernel", "uptime"], ["memory", "disk"], ["packages"]]
+
+[colors]
+border = "#504945"
+background = "#282828"
+header = "#ebdbb2"
+value = "#ebdbb2"
+sitch = "#d3869b"
+
+[colors.titles]
+os = "#fb4934"
+host = "#fabd2f"
+disk = "#cc241d"
+memory = "#b8bb26"
+kernel = "#83a598"
+uptime = "#d3869b"
+gpu = "#458588"
+igpu = "#8ec07c"
+cpu = "#fe8019"
+packages = "#ebdbb2"
+shell = "#fabd2f"
+display = "#83a598"
+desktop = "#b8bb26"
+terminal = "#d3869b"
+os-age = "#fb4934"
+locale = "#b16286"
+logo = "#bb9af7"

@@ -1,0 +1,19 @@
+# Logo on the right of the grid. Useful when the terminal is narrow and
+# the logo would crowd the data on the left side.
+format = "terminal"
+color_mode = "charmtone"
+ascii = true
+logo_position = "right"
+logo_justify = "top"
+footer_align = "full"
+
+rows = [
+  ["os", "host"],
+  ["disk", "memory"],
+  ["kernel", "uptime"],
+  ["gpu", "igpu"],
+  ["cpu", "packages"],
+  ["shell", "display"],
+  ["desktop", "terminal"],
+  ["os-age", "locale"],
+]

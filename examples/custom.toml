@@ -1,0 +1,60 @@
+# Custom palette inspired by Rose Pine.
+format = "terminal"
+color_mode = "custom"
+
+rows = [
+  [
+    "os",
+    "host",
+    "kernel",
+  ],
+  [
+    "gpu",
+    "igpu",
+    "cpu",
+  ],
+  [
+    "memory",
+    "disk",
+  ],
+  [
+    "packages",
+    "shell",
+    "terminal",
+  ],
+  [
+    "display",
+    "desktop",
+  ],
+  [
+    "uptime",
+    "os-age",
+    "locale",
+  ],
+]
+
+[colors]
+border = "#6e6a86"
+background = ""
+header = "#e0def4"
+value = "#e0def4"
+sitch = "#c4a7e7"
+
+[colors.titles]
+os = "#eb6f92"
+host = "#f6c177"
+disk = "#eb6f92"
+memory = "#9ccfd8"
+kernel = "#3e8fb0"
+uptime = "#c4a7e7"
+gpu = "#31748f"
+igpu = "#9ccfd8"
+cpu = "#f6c177"
+packages = "#e0def4"
+shell = "#f6c177"
+display = "#9ccfd8"
+desktop = "#c4a7e7"
+terminal = "#eb6f92"
+os-age = "#eb6f92"
+locale = "#c4a7e7"
+logo = "#bb9af7"

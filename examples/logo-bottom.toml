@@ -1,0 +1,19 @@
+# Logo below the grid, full width. Like logo-top but with the logo after
+# the data block.
+format = "terminal"
+color_mode = "charmtone"
+ascii = true
+logo_position = "bottom"
+logo_justify = "top"
+footer_align = "full"
+
+rows = [
+  ["os", "host"],
+  ["disk", "memory"],
+  ["kernel", "uptime"],
+  ["gpu", "igpu"],
+  ["cpu", "packages"],
+  ["shell", "display"],
+  ["desktop", "terminal"],
+  ["os-age", "locale"],
+]

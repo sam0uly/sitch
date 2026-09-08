@@ -1,0 +1,16 @@
+# Disable the ASCII logo column — shows only the Bento grid.
+# Use this for a more minimal look or in terminals that render
+# the logo poorly.
+ascii = false
+format = "terminal"
+color_mode = "charmtone"
+
+rows = [
+  ["os", "host"],
+  ["kernel", "uptime"],
+  ["cpu"],
+  ["gpu", "igpu"],
+  ["memory", "disk"],
+  ["shell", "terminal"],
+  ["desktop", "display"],
+]

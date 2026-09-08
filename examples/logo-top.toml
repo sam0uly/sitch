@@ -1,0 +1,19 @@
+# Logo above the grid, full width. Useful for a vertical, terminal-like
+# layout where the logo is shown prominently above the system info.
+format = "terminal"
+color_mode = "charmtone"
+ascii = true
+logo_position = "top"
+logo_justify = "top"
+footer_align = "full"
+
+rows = [
+  ["os", "host"],
+  ["disk", "memory"],
+  ["kernel", "uptime"],
+  ["gpu", "igpu"],
+  ["cpu", "packages"],
+  ["shell", "display"],
+  ["desktop", "terminal"],
+  ["os-age", "locale"],
+]

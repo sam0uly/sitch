@@ -1,0 +1,50 @@
+# Custom palette inspired by Dracula.
+format = "terminal"
+color_mode = "custom"
+ascii = false
+
+rows = [
+  [
+    "gpu",
+    "igpu",
+    "cpu",
+  ],
+  [
+    "packages",
+    "shell",
+  ],
+  [
+    "desktop",
+  ],
+  [
+    "display",
+    "terminal",
+    "locale",
+  ],
+]
+
+[colors]
+border = "#6272a4"
+background = "#282a36"
+header = "#f8f8f2"
+value = "#f8f8f2"
+sitch = "#ff79c6"
+
+[colors.titles]
+os = "#ff5555"
+host = "#ffb86c"
+disk = "#ff79c6"
+memory = "#50fa7b"
+kernel = "#8be9fd"
+uptime = "#bd93f9"
+gpu = "#ffb86c"
+igpu = "#8be9fd"
+cpu = "#ff5555"
+packages = "#f1fa8c"
+shell = "#ffb86c"
+display = "#8be9fd"
+desktop = "#50fa7b"
+terminal = "#ff79c6"
+os-age = "#bd93f9"
+locale = "#f8f8f2"
+logo = "#bb9af7"

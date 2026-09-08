@@ -1,0 +1,12 @@
+# Use the terminal's ANSI palette instead of Charmtone.
+format = "terminal"
+color_mode = "tty"
+
+rows = [
+  ["os", "host"],
+  ["gpu", "igpu"],
+  ["cpu", "memory"],
+  ["packages", "shell"],
+  ["display", "desktop"],
+  ["terminal", "uptime"],
+]

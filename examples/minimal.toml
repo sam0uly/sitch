@@ -1,0 +1,5 @@
+# A compact one-column fetch.
+format = "terminal"
+color_mode = "charmtone"
+
+rows = [["os"], ["host"], ["cpu"], ["gpu"], ["igpu"], ["memory"], ["packages"]]

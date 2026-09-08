@@ -1,0 +1,32 @@
+# Custom palette inspired by Catppuccin Mocha.
+format = "terminal"
+color_mode = "custom"
+ascii = false
+
+rows = [["os"], ["host", "kernel"], ["gpu", "igpu", "cpu"], ["memory"]]
+
+[colors]
+border = "#45475a"
+background = "#1e1e2e"
+header = "#cdd6f4"
+value = "#cdd6f4"
+sitch = "#b4befe"
+
+[colors.titles]
+os = "#f38ba8"
+host = "#fab387"
+disk = "#f5c2e7"
+memory = "#a6e3a1"
+kernel = "#89dceb"
+uptime = "#cba6f7"
+gpu = "#89b4fa"
+igpu = "#94e2d5"
+cpu = "#eba0ac"
+packages = "#cdd6f4"
+shell = "#f9e2af"
+display = "#74c7ec"
+desktop = "#a6adc8"
+terminal = "#fab387"
+os-age = "#f5c2e7"
+locale = "#b4befe"
+logo = "#bb9af7"

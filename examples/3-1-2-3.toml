@@ -1,0 +1,50 @@
+# Custom palette inspired by Tokyo Night.
+format = "terminal"
+color_mode = "custom"
+ascii = false
+
+rows = [
+  [
+    "os",
+    "host",
+    "kernel",
+  ],
+  [
+    "gpu",
+  ],
+  [
+    "igpu",
+    "cpu",
+  ],
+  [
+    "memory",
+    "disk",
+    "packages",
+  ],
+]
+
+[colors]
+border = "#565f89"
+background = "#1a1b26"
+header = "#c0caf5"
+value = "#c0caf5"
+sitch = "#bb9af7"
+
+[colors.titles]
+os = "#f7768e"
+host = "#e0af68"
+disk = "#ff9e64"
+memory = "#9ece6a"
+kernel = "#7dcfff"
+uptime = "#bb9af7"
+gpu = "#2ac3de"
+igpu = "#73daca"
+cpu = "#ff7a93"
+packages = "#c0caf5"
+shell = "#e0af68"
+display = "#7aa2f7"
+desktop = "#a6da95"
+terminal = "#f7768e"
+os-age = "#ff9e64"
+locale = "#c0a9f6"
+logo = "#bb9af7"

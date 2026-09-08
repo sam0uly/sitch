@@ -1,0 +1,25 @@
+# Small logo variant (where available) and truncated to fit the grid.
+# `logo_size = "small"` picks the fastfetch `_small` variant if one exists
+# for the distro; otherwise the regular variant is used.
+# `truncate = true` clips the logo vertically so the body never grows
+# taller than the grid+header; useful when the logo is much taller than
+# the data block and you want a compact layout.
+format = "terminal"
+color_mode = "charmtone"
+ascii = true
+logo_size = "small"
+truncate = true
+logo_position = "left"
+logo_justify = "top"
+footer_align = "full"
+
+rows = [
+  ["os", "host"],
+  ["disk", "memory"],
+  ["kernel", "uptime"],
+  ["gpu", "igpu"],
+  ["cpu", "packages"],
+  ["shell", "display"],
+  ["desktop", "terminal"],
+  ["os-age", "locale"],
+]

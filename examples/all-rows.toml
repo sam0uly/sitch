@@ -1,0 +1,41 @@
+# Custom palette inspired by Kanagawa.
+format = "terminal"
+color_mode = "custom"
+
+# Every supported spec is shown here.
+rows = [
+  ["os", "host"],
+  ["disk", "memory"],
+  ["kernel", "uptime"],
+  ["gpu", "igpu"],
+  ["cpu", "packages"],
+  ["shell", "display"],
+  ["desktop", "terminal"],
+  ["os-age", "locale"],
+]
+
+[colors]
+border = "#54546d"
+background = "#1f1f28"
+header = "#dcd7ba"
+value = "#dcd7ba"
+sitch = "#957fb8"
+
+[colors.titles]
+os = "#c34043"
+host = "#ffa066"
+disk = "#e82424"
+memory = "#76946a"
+kernel = "#7fb4ca"
+uptime = "#b6927b"
+gpu = "#a292a3"
+igpu = "#87a987"
+cpu = "#ff5d62"
+packages = "#d7c995"
+shell = "#ffa066"
+display = "#7fb4ca"
+desktop = "#76946a"
+terminal = "#c8c093"
+os-age = "#e82424"
+locale = "#957fb8"
+logo = "#bb9af7"
