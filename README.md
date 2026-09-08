@@ -20,7 +20,7 @@ sitch -c examples/minimal.toml
 Build from source:
 
 ```sh
-go build -trimpath -ldflags='-s -w' -o sitch ./cmd/sitch
+go build -ldflags='-s -w' -o sitch ./cmd/sitch
 ```
 
 ## Config
