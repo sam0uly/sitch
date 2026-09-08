@@ -10,7 +10,11 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-func memory(raw string) (used, total uint64, unit string) {
+func memory() (used, total uint64, unit string) {
+	return parseMeminfo(readFileOrEmpty("/proc/meminfo"))
+}
+
+func parseMeminfo(raw string) (used, total uint64, unit string) {
 	var available uint64
 	for line := range strings.SplitSeq(raw, "\n") {
 		fields := strings.Fields(line)

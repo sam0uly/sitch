@@ -34,7 +34,7 @@ func collectPlatform(ctx context.Context) (Info, error) {
 	info.GPUs, info.IGPU = gpuModels(hardwareCtx)
 	hardwareCancel()
 	info.GPU = firstNonEmpty(strings.Join(discreteGPUModels(info.GPUs, info.IGPU), ", "), "unknown")
-	info.MemoryUsed, info.MemoryTotal, info.MemoryUnit = memory(readFileOrEmpty("/proc/meminfo"))
+	info.MemoryUsed, info.MemoryTotal, info.MemoryUnit = memory()
 	info.DiskUsed, info.DiskTotal = diskUsage("/")
 	packageCtx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
