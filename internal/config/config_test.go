@@ -121,7 +121,7 @@ func TestLoadAcceptsReadableLogoFile(t *testing.T) {
 		t.Fatal(err)
 	}
 	path := filepath.Join(dir, "config.toml")
-	contents := "logo_file = \"" + art + "\"\n"
+	contents := "logo_file = '" + art + "'\n"
 	if err := os.WriteFile(path, []byte(contents), 0o600); err != nil {
 		t.Fatal(err)
 	}
