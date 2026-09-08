@@ -1,0 +1,70 @@
+# .goreleaser.yaml -- goreleaser v2 config for sitch (adapted from spin).
+version: 2
+project_name: sitch
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: sitch
+    main: ./cmd/sitch
+    binary: sitch
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X main.version={{.Version}}
+      - -X main.commit={{.Commit}}
+
+archives:
+  - id: sitch
+    formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - README.md
+      - LICENSE
+
+checksum:
+  name_template: "checksums.txt"
+  algorithm: sha256
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  use: git
+  sort: asc
+  filters:
+    exclude:
+      - Merge pull request
+      - Merge branch
+
+release:
+  github:
+    owner: sam0uly
+    name: sitch
+  prerelease: auto
+  draft: false
+  name_template: "{{ .ProjectName }} v{{ .Version }}"
+  header: |
+    ## sitch {{ .Tag }}
+    Released {{ .Date }}.
+  footer: |
+    ## Install
+
+    ```
+    go install samouly.fun/sitch@{{ .Tag }}
+    ```
+
+    Or download a binary below.
