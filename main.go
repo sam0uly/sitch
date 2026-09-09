@@ -11,11 +11,7 @@ import (
 	"samouly.fun/sitch/internal/config"
 	"samouly.fun/sitch/internal/render"
 	"samouly.fun/sitch/internal/system"
-)
-
-var (
-	version = "0.2.0"
-	commit  = "unknown"
+	"samouly.fun/sitch/internal/version"
 )
 
 func main() {
@@ -85,7 +81,7 @@ func main() {
 	root.Flags().BoolVar(&truncate, "truncate", false, "clip the logo vertically so the body never grows taller than the grid+header")
 	root.Flags().BoolP("fetch", "f", false, "print system information (default)")
 
-	if err := fang.Execute(context.Background(), root, fang.WithVersion(version), fang.WithCommit(commit)); err != nil {
+	if err := fang.Execute(context.Background(), root, fang.WithVersion(version.Version), fang.WithCommit(version.Commit)); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
 		os.Exit(1)
 	}
