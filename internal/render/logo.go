@@ -1,6 +1,7 @@
 package render
 
 import (
+	"image/color"
 	"slices"
 	"strings"
 
@@ -77,9 +78,7 @@ func renderLogoBox(info system.Info) (string, int) {
 	maxWidth := 0
 	for i, raw := range lines {
 		expanded := expandColorPlaceholders(raw)
-		// Cycle the palette so logos with more lines than the palette still
-		// render (the color just repeats).
-		accent := titleColors[i%len(titleColors)]
+		accent := logoAccent(i)
 		styled := lipgloss.NewStyle().Foreground(accent).Render(expanded)
 		out = append(out, styled)
 		if w := lipgloss.Width(styled); w > maxWidth {
@@ -89,12 +88,28 @@ func renderLogoBox(info system.Info) (string, int) {
 	return strings.Join(out, "\n"), maxWidth
 }
 
+// logoAccent picks the foreground color for a logo line. In multi mode
+// (the default) it cycles the titleColors palette; in single mode every
+// line uses the configured logo_color, falling back to the first palette
+// entry when no color was set.
+func logoAccent(line int) color.Color {
+	if activeLogoColorMode == "single" {
+		if activeLogoColor != nil {
+			return activeLogoColor
+		}
+		return titleColors[0]
+	}
+	return titleColors[line%len(titleColors)]
+}
+
 // currentLogoSize is the size the user requested for the current render.
 // It is set by PrintWithOptions via setLogoSize before renderLogoBox runs.
 var (
-	activeLogoSize    = "regular"
-	activeLogoRequest logoRequest
-	truncateHeight    int
+	activeLogoSize      = "regular"
+	activeLogoRequest   logoRequest
+	activeLogoColorMode = "multi"
+	activeLogoColor     color.Color
+	truncateHeight      int
 )
 
 // logoRequest records an explicit logo override for the current render:
@@ -123,6 +138,23 @@ func setLogoSize(size string) {
 		size = "regular"
 	}
 	activeLogoSize = size
+}
+
+// setLogoColorMode remembers the logo coloring choice for one render.
+// mode "single" applies logoSpec to every line; an empty spec keeps the
+// palette's first entry, and "none" renders the logo transparent.
+func setLogoColorMode(mode, logoSpec string) {
+	if mode == "" {
+		mode = "multi"
+	}
+	activeLogoColorMode = mode
+	activeLogoColor = nil
+	if mode == "single" {
+		spec := strings.TrimSpace(logoSpec)
+		if spec != "" {
+			activeLogoColor = transparentColor(spec)
+		}
+	}
 }
 
 // setTruncateHeight caps the logo to a maximum line count. Pass 0 to

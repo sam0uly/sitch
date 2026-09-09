@@ -28,7 +28,7 @@ sitch -c examples/minimal.toml
 Build from source:
 
 ```sh
-go build -ldflags='-s -w' -o sitch ./cmd/sitch
+go build -ldflags='-s -w' -o sitch .
 ```
 
 ## Config
@@ -43,6 +43,8 @@ Top-level keys (each has a matching flag where one exists; see the [Flag referen
 - `logo_position` (`"left"`, `"right"`, `"top"`, `"bottom"`). Default: `"left"`. Where the ASCII logo sits relative to the Bento grid. `top` and `bottom` stack the logo above/below the grid; `left` and `right` place it in a side column. No CLI flag; set in TOML.
 - `logo_justify` (`"top"`, `"middle"`, `"bottom"`). Default: `"top"`. Vertical alignment of the logo against the grid when the logo is in a side column. Only meaningful when the logo is taller than the grid; if the logo is shorter, the column simply pads with blank lines per the chosen justify. No CLI flag; set in TOML.
 - `logo_size` (`"regular"` or `"small"`). Default: `"regular"`. `"small"` uses the fastfetch small variant if one exists for the distro (note: small variants use newer Unicode block characters that may not render in all terminals). No CLI flag; set in TOML.
+- `logo_color_mode` (`"multi"` or `"single"`). Default: `"multi"`. `multi` cycles the active theme's palette across the logo lines (the classic fastfetch look); `single` paints the whole logo with one color. No CLI flag; set in TOML.
+- `logo_color` (`"<color>"`). Default: empty. The accent used when `logo_color_mode = "single"`; if empty, the first palette entry is used instead, and the literal `"none"` renders the logo transparent. Accepts hex (`#rgb`, `#rrggbb`), ANSI numbers (0-255), or terminal color names. Ignored in `multi` mode. No CLI flag; set in TOML.
 - `truncate` (`true` or `false`). Default: `false`. When `true`, clips the logo vertically so the body never grows taller than the (header + grid) — useful when the logo is much taller than the data block. CLI: `--truncate`.
 - `logo` (`"<id>"`). Default: empty (auto-detect from the host distro). Force a specific bundled logo by id. `logo = "arch"` always shows the Arch art; `logo = "nixos_small"` shows the small NixOS variant. Case-insensitive. Unknown ids cause a load error that lists the available ids. CLI: `--logo <id>`.
 - `logo_file` (`"<path>"`). Default: empty. Use a custom ASCII art file instead of any bundled logo. Takes precedence over `logo` and over auto-detection. Errors out at load if the path is missing or unreadable; errors at render if the file is empty. CLI: `--logo-file <path>`.
@@ -76,7 +78,7 @@ Flags override TOML where it makes sense. Every flag below is also accepted in t
 
 `examples/` has ready-to-use configs. `minimal.toml` is the one charmtone example and `tty.toml` is the one tty example. Everything else is `custom` with a different well-known palette:
 
-- `minimal.toml`: one column, charmtone.
+- `minimal.toml`: one column, charmtone, single-color logo (`#ff985a`).
 - `no-ascii.toml`: two-column layout, logo hidden (ascii = false).
 - `ascii-minimal.toml`: one-column, logo on the left, charmtone.
 - `logo-right.toml`: logo on the right of the grid.

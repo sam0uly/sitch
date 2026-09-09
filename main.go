@@ -60,17 +60,19 @@ func main() {
 				logoPath = logoFile
 			}
 			return render.PrintWithOptions(info, render.Options{
-				Rows:         cfg.Rows,
-				ColorMode:    cfg.ColorMode,
-				Colors:       cfg.Colors,
-				ASCII:        ascii,
-				LogoPosition: cfg.LogoPosition,
-				LogoJustify:  cfg.LogoJustify,
-				LogoSize:     cfg.LogoSize,
-				Logo:         logoName,
-				LogoFile:     logoPath,
-				Truncate:     trunc,
-				FooterAlign:  cfg.FooterAlign,
+				Rows:          cfg.Rows,
+				ColorMode:     cfg.ColorMode,
+				Colors:        cfg.Colors,
+				ASCII:         ascii,
+				LogoPosition:  cfg.LogoPosition,
+				LogoJustify:   cfg.LogoJustify,
+				LogoSize:      cfg.LogoSize,
+				LogoColorMode: cfg.LogoColorMode,
+				LogoColor:     cfg.LogoColor,
+				Logo:          logoName,
+				LogoFile:      logoPath,
+				Truncate:      trunc,
+				FooterAlign:   cfg.FooterAlign,
 			})
 		},
 	}

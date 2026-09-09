@@ -133,3 +133,32 @@ func TestLoadAcceptsReadableLogoFile(t *testing.T) {
 		t.Fatalf("logo_file path not preserved: %q", cfg.LogoFile)
 	}
 }
+
+func TestLoadLogoColorOptions(t *testing.T) {
+	dir := t.TempDir()
+	write := func(contents string) (Config, error) {
+		t.Helper()
+		path := filepath.Join(dir, "config.toml")
+		if err := os.WriteFile(path, []byte(contents), 0o600); err != nil {
+			t.Fatal(err)
+		}
+		return Load(path)
+	}
+
+	cfg, err := write("logo_color_mode = \"single\"\nlogo_color = \"#ff985a\"\n")
+	if err != nil {
+		t.Fatalf("Load() rejected valid logo color options: %v", err)
+	}
+	if cfg.LogoColorMode != "single" || cfg.LogoColor != "#ff985a" {
+		t.Fatalf("logo color options not preserved: mode=%q color=%q", cfg.LogoColorMode, cfg.LogoColor)
+	}
+	for _, tc := range []struct{ name, contents string }{
+		{"bad mode", "logo_color_mode = \"rainbow\"\n"},
+		{"bad color", "logo_color_mode = \"single\"\nlogo_color = \"#zzz\"\n"},
+		{"bad color in multi", "logo_color = \"not-a-color\"\n"},
+	} {
+		if _, err := write(tc.contents); err == nil {
+			t.Errorf("%s: Load() accepted invalid options", tc.name)
+		}
+	}
+}

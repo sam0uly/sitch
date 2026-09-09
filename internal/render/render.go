@@ -22,17 +22,19 @@ func Print(info system.Info, ascii bool) error {
 
 // Options controls the renderer's configured row groups.
 type Options struct {
-	Rows         [][]string
-	ColorMode    string
-	Colors       config.CustomColors
-	ASCII        bool
-	LogoPosition string // "left", "right", "top", "bottom"
-	LogoJustify  string // "top", "middle", "bottom"
-	LogoSize     string // "regular" or "small"
-	Logo         string // bundled logo id override; empty means auto-detect
-	LogoFile     string // path to a custom ASCII art file; empty means bundled
-	Truncate     bool   // if true, clip the logo so it never exceeds the grid height
-	FooterAlign  string // "full" or "grid"
+	Rows          [][]string
+	ColorMode     string
+	Colors        config.CustomColors
+	ASCII         bool
+	LogoPosition  string // "left", "right", "top", "bottom"
+	LogoJustify   string // "top", "middle", "bottom"
+	LogoSize      string // "regular" or "small"
+	LogoColorMode string // "multi" cycles the theme palette; "single" uses LogoColor
+	LogoColor     string // logo_color_mode = "single" accent; empty falls back to the first palette entry
+	Logo          string // bundled logo id override; empty means auto-detect
+	LogoFile      string // path to a custom ASCII art file; empty means bundled
+	Truncate      bool   // if true, clip the logo so it never exceeds the grid height
+	FooterAlign   string // "full" or "grid"
 }
 
 // PrintWithOptions renders a system snapshot.
@@ -77,6 +79,7 @@ func PrintWithOptions(info system.Info, options Options) error {
 		logoSize = "regular"
 	}
 	setLogoSize(logoSize)
+	setLogoColorMode(options.LogoColorMode, options.LogoColor)
 	logoText := ""
 	if options.LogoFile != "" {
 		data, err := os.ReadFile(options.LogoFile)

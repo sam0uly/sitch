@@ -1,5 +1,7 @@
-# A compact one-column fetch.
+# A compact one-column fetch with a single-color logo.
 format = "terminal"
 color_mode = "charmtone"
+logo_color_mode = "single"
+logo_color = "#94e2d5"
 
 rows = [["os"], ["host"], ["cpu"], ["gpu"], ["igpu"], ["memory"], ["packages"]]

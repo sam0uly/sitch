@@ -13,18 +13,20 @@ import (
 
 // Config controls output format, visible specs, and their row grouping.
 type Config struct {
-	Format       string       `toml:"format"`
-	ASCII        *bool        `toml:"ascii"`
-	ColorMode    string       `toml:"color_mode"`
-	LogoPosition string       `toml:"logo_position"`
-	LogoJustify  string       `toml:"logo_justify"`
-	LogoSize     string       `toml:"logo_size"`
-	Logo         string       `toml:"logo"`
-	LogoFile     string       `toml:"logo_file"`
-	Truncate     bool         `toml:"truncate"`
-	FooterAlign  string       `toml:"footer_align"`
-	Colors       CustomColors `toml:"colors"`
-	Rows         [][]string   `toml:"rows"`
+	Format        string       `toml:"format"`
+	ASCII         *bool        `toml:"ascii"`
+	ColorMode     string       `toml:"color_mode"`
+	LogoPosition  string       `toml:"logo_position"`
+	LogoJustify   string       `toml:"logo_justify"`
+	LogoSize      string       `toml:"logo_size"`
+	LogoColorMode string       `toml:"logo_color_mode"`
+	LogoColor     string       `toml:"logo_color"`
+	Logo          string       `toml:"logo"`
+	LogoFile      string       `toml:"logo_file"`
+	Truncate      bool         `toml:"truncate"`
+	FooterAlign   string       `toml:"footer_align"`
+	Colors        CustomColors `toml:"colors"`
+	Rows          [][]string   `toml:"rows"`
 }
 
 // CustomColors contains the complete palette required by custom mode.
@@ -99,6 +101,12 @@ func Load(path string) (Config, error) {
 	}
 	if cfg.LogoSize != "" && cfg.LogoSize != "regular" && cfg.LogoSize != "small" {
 		return Config{}, fmt.Errorf("logo_size must be regular or small, got %q", cfg.LogoSize)
+	}
+	if cfg.LogoColorMode != "" && cfg.LogoColorMode != "multi" && cfg.LogoColorMode != "single" {
+		return Config{}, fmt.Errorf("logo_color_mode must be multi or single, got %q", cfg.LogoColorMode)
+	}
+	if strings.TrimSpace(cfg.LogoColor) != "" && !isColorValue(cfg.LogoColor) {
+		return Config{}, fmt.Errorf("logo_color %q is invalid; valid colors are hex (#rgb, #rrggbb), ANSI (0-255), or terminal names", cfg.LogoColor)
 	}
 	if cfg.LogoFile != "" {
 		if _, err := os.Stat(cfg.LogoFile); err != nil {
@@ -293,6 +301,9 @@ func DefaultTOML() string {
 # See https://samouly.fun/sitch for the full list of options.
 format = "terminal"
 color_mode = "charmtone"
+
+# logo_color_mode = "multi"  # "multi" cycles the theme palette; "single" paints the whole logo with logo_color
+# logo_color = "#ff985a"
 
 rows = [
   ["os", "host"],

@@ -218,3 +218,53 @@ func TestComposeWithLogoShortGrid(t *testing.T) {
 		_ = gridHeight
 	}
 }
+
+func TestLogoAccentSingleMode(t *testing.T) {
+	setPalette("charmtone", config.CustomColors{})
+	setLogoSize("regular")
+	setLogoRequest("arch", "")
+	setTruncateHeight(0)
+	defer setLogoColorMode("", "")
+
+	setLogoColorMode("multi", "")
+	multiFirst, multiSecond := logoAccent(0), logoAccent(1)
+	r1, g1, b1, _ := multiFirst.RGBA()
+	r2, g2, b2, _ := multiSecond.RGBA()
+	if r1 == r2 && g1 == g2 && b1 == b2 {
+		t.Fatal("multi mode repeats the same color on consecutive lines")
+	}
+
+	setLogoColorMode("single", "#ff0000")
+	red, _, _, _ := logoAccent(0).RGBA()
+	if red>>8 != 0xff {
+		t.Fatalf("single mode accent red channel = %#x, want 0xff", red>>8)
+	}
+	for line := range 12 {
+		r, g, b, _ := logoAccent(line).RGBA()
+		if r>>8 != 0xff || g>>8 != 0x00 || b>>8 != 0x00 {
+			t.Fatalf("single mode line %d uses (%#x, %#x, %#x), want pure red", line, r>>8, g>>8, b>>8)
+		}
+	}
+	info := system.Info{DistroID: "arch"}
+	if _, w := renderLogoBox(info); w <= 0 {
+		t.Fatal("renderLogoBox returned non-positive width in single mode")
+	}
+}
+
+func TestLogoAccentSingleModeFallback(t *testing.T) {
+	setPalette("charmtone", config.CustomColors{})
+	defer setLogoColorMode("", "")
+
+	setLogoColorMode("single", "")
+	fallback := logoAccent(0)
+	first, _, _, _ := fallback.RGBA()
+	wantR, _, _, _ := titleColors[0].RGBA()
+	if first != wantR {
+		t.Fatalf("single mode without logo_color should fall back to the first palette entry")
+	}
+	r7, g7, b7, _ := logoAccent(7).RGBA()
+	fr, fg, fb, _ := fallback.RGBA()
+	if r7 != fr || g7 != fg || b7 != fb {
+		t.Fatal("single mode without logo_color should use one constant color")
+	}
+}
