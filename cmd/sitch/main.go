@@ -7,10 +7,10 @@ import (
 	"os"
 
 	"charm.land/fang/v2"
+	"github.com/spf13/cobra"
 	"samouly.fun/sitch/internal/config"
 	"samouly.fun/sitch/internal/render"
 	"samouly.fun/sitch/internal/system"
-	"github.com/spf13/cobra"
 )
 
 var (
