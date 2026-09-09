@@ -8,7 +8,7 @@ before:
 
 builds:
   - id: sitch
-    main: ./cmd/sitch
+    main: .
     binary: sitch
     env:
       - CGO_ENABLED=0

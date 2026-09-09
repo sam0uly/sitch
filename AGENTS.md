@@ -8,14 +8,14 @@ Sitch is a fast, colorful system fetch (think `neofetch`) written in Go, rendere
 
 Build:
 ```
-go build -trimpath -ldflags='-s -w' -o sitch ./cmd/sitch
+go build -trimpath -ldflags='-s -w' -o sitch .
 ```
 
 Run:
 ```
-go run ./cmd/sitch                     # default terminal output
-go run ./cmd/sitch --json              # JSON dump of system.Info
-go run ./cmd/sitch -c examples/minimal.toml
+go run .                     # default terminal output
+go run . --json              # JSON dump of system.Info
+go run . -c examples/minimal.toml
 ```
 
 Test (CI uses `-race`):
@@ -32,7 +32,7 @@ No Makefile, no task runner. VHS (`tapes/*.tape`) is used only to regenerate dem
 
 Three internal packages, single binary entry point:
 
-- `cmd/sitch/main.go` is a cobra command wired through `charm.land/fang/v2` (not raw cobra). Flags: `--no-ascii/-a` (hide distro logo), `--json/-j`, `--config/-c`, `--color` (charmtone/tty; `custom` must be in TOML), `--truncate` (clip the logo vertically so the body never grows taller than the header+grid), `--logo <id>` (force a specific bundled logo id; case-insensitive), `--logo-file <path>` (read custom ASCII art from a file; overrides `--logo` and auto-detection), `--fetch/-f` (default behavior). `--color` is merged into the loaded config after parsing, so it cannot pick `custom`. The `Options.ASCII` field controls logo visibility (defaults to `true`; set to `false` when `--no-ascii` is passed). `Options.LogoPosition` is one of `left`/`right`/`top`/`bottom` (default `left`); `Options.LogoJustify` is `top`/`middle`/`bottom` (default `top`). `Options.LogoSize` is `regular`/`small` (default `regular`); `small` uses the fastfetch `_small` variant if one exists. `Options.Logo` and `Options.LogoFile` are the bundled-id and custom-file overrides; precedence is `LogoFile > Logo > auto-detect`. `Options.Truncate` is a bool (default `false`); when true, caps the logo line count to the grid's line count. `Options.FooterAlign` is `full`/`grid` (default `full`).
+- `main.go` (repo root, package `main` so `go install samouly.fun/sitch@latest` works) is a cobra command wired through `charm.land/fang/v2` (not raw cobra). Flags: `--no-ascii/-a` (hide distro logo), `--json/-j`, `--config/-c`, `--color` (charmtone/tty; `custom` must be in TOML), `--truncate` (clip the logo vertically so the body never grows taller than the header+grid), `--logo <id>` (force a specific bundled logo id; case-insensitive), `--logo-file <path>` (read custom ASCII art from a file; overrides `--logo` and auto-detection), `--fetch/-f` (default behavior). `--color` is merged into the loaded config after parsing, so it cannot pick `custom`. The `Options.ASCII` field controls logo visibility (defaults to `true`; set to `false` when `--no-ascii` is passed). `Options.LogoPosition` is one of `left`/`right`/`top`/`bottom` (default `left`); `Options.LogoJustify` is `top`/`middle`/`bottom` (default `top`). `Options.LogoSize` is `regular`/`small` (default `regular`); `small` uses the fastfetch `_small` variant if one exists. `Options.Logo` and `Options.LogoFile` are the bundled-id and custom-file overrides; precedence is `LogoFile > Logo > auto-detect`. `Options.Truncate` is a bool (default `false`); when true, caps the logo line count to the grid's line count. `Options.FooterAlign` is `full`/`grid` (default `full`).
 - `internal/config` is the TOML loader (BurntSushi/toml). Validates `format in {terminal, json}`, `color_mode in {charmtone, tty, custom}`, `logo_position in {left, right, top, bottom}`, `logo_justify in {top, middle, bottom}`, `logo_size in {regular, small}`, `footer_align in {full, grid}`, row count (1 to 3 columns), and that every spec in `rows` is a known key. For `color_mode = "custom"` it validates the format of any non-empty color: empty values are accepted and rendered transparent (using the terminal default styling). Invalid non-empty values cause a load error that prints the invalid key names plus `CustomColorExample()` so users have a pasteable block. When `logo` is set, the id is checked against the bundled set (`render.LogoNames()`); unknown ids error with the list of available ids. When `logo_file` is set, the path is `os.Stat`-ed at load time so missing files fail fast.
 - `internal/system` is the platform-specific collection of `Info`. Two build tags split reality:
   - `platform_linux.go`, `metrics.go`, `gpu_linux.go`, `wm_linux.go` are the real implementations (Linux only).
