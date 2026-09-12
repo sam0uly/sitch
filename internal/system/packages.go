@@ -34,11 +34,11 @@ func packageCounts(ctx context.Context, distro string) (system, user, total int)
 	case "gentoo":
 		count = packageDirectoryCount("/var/db/pkg")
 	case "fedora", "rhel", "centos", "redhat", "opensuse":
-		count = commandLineCount(ctx, "rpm", "-qa")
+		count = commandLineCount(ctx, "rpm", "-qa", "--nodigest", "--nosignature")
 	case "void":
 		count = commandLineCount(ctx, "xbps-query", "-l")
 	}
-	return 0, 0, count
+	return count, 0, count
 }
 
 func nixStorePackageCounts(ctx context.Context, profiles ...string) []int {
